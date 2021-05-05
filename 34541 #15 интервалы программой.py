@@ -10,18 +10,15 @@
 '''
 
 
-def F(A, x):
-    # print(((x in Q) <= (x in P)) <= (x not in A))
-    return ((x in Q) <= (x in P)) <= (x not in A)
-
-
 P = range(3, 38 + 1)
 Q = range(21, 57 + 1)
 
-A = set()
+A = range()
 
-for x in range(1, 1000):
-    if F(A, x) is False:
-        A.add(x)
-
-print(sorted(A))
+for x in range(1, 100):
+    z = ((x in Q) <= (x in P)) <= (x not in A)
+    if z is False:
+        print('Неа')
+        break
+else:
+    print(A)
