@@ -8,11 +8,10 @@ x & 29 ≠ 0 → (x & 17 = 0 → x & А ≠ 0)
 
 for A in range(0, 100):
     for x in range(0, 10000):
-        # if ((x & 51 == 0) or ((x & 41 == 0) <= (x & A == 0))) is False:
-        #     break
         if ((x & 29 != 0) <= ((x & 17 == 0) <= (x & A != 0))) is False:
             break
     else:
         print(A)
 
 # ВЕЗДЕ ставить скобки в выражениях!!!
+# учитывать нули!
