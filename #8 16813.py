@@ -7,3 +7,24 @@
 Сколько различных кодов может составить Левий?
 '''
 
+
+lst = []
+for i in 'ЛЕВИЙ':
+    for j in 'ЛЕВИЙ':
+        for k in 'ЛЕВИЙ':
+            for l in 'ЛЕВИЙ':
+                for m in 'ЛЕВИЙ':
+                        lst.append(i + j + k + l + m)
+
+cnt = 0
+for word in lst:
+    if not (word.count('Л') != 1 or
+            word.count('Е') != 1 or
+            word.count('В') != 1 or
+            word.count('И') != 1 or
+            word.count('Й') != 1 or
+            word[0] == "Й" or
+            'ЕИ' in word):
+        cnt += 1
+
+print(cnt)
