@@ -18,4 +18,3 @@ for i in range(3, len(s)):
         cnt = 3
 
 print(mx)
-input()
