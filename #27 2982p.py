@@ -13,22 +13,18 @@ with open('#27 2982p.txt') as f:
         lst.append(int(f.readline().strip()))
 
 
-# будем первую половинку получающегося числа записывать в строку
-s = ''
-
+sm = 0
 
 # если число больше перевернутого, то
 # смотрим каких чисел "прямых" или "перевернутых" меньше и
-# добавляем к строке прямые числа в "минимальном" количестве.
-# А в случае "симметричного" числа добавляем его максимальное четное число раз (используя // 2)
+# добавляем к sm удвоенную сумму цифр, исходя из меньшего количества.
+# А в случае "симметричного" числа добавляем его цифры максимальное четное число раз (используя // 2)
 for number in range(999, 99, -1):
     if number > int(str(number)[::-1]):
-        s += str(number) * min(lst.count(number), lst.count(int(str(number)[::-1])))
+        sm += 2 * ((number % 10 + number // 10 % 10 + number // 100) *
+              min(lst.count(number), lst.count(int(str(number)[::-1]))))
     elif number == int(str(number)[::-1]):
-        s += str(number) * (lst.count(number) // 2)
-
-# находим сумму цифр числа, не забывая, что правую часть числа мы не записывали
-sm = 2 * sum(map(int, list(s)))
+        sm += 2 * (number % 10 + number // 10 % 10 + number // 100) * (lst.count(number) // 2)
 
 # находим максимальное симметричное число,
 # которое встречалось нечетное число раз
@@ -38,7 +34,7 @@ for number in range(999, 99, -1):
     if number == int(str(number)[::-1]):
         print(number, lst.count(number))
         if lst.count(number) % 2 != 0:
-            sm = sm + (number % 10 + number // 10 % 10 + number // 100)
+            sm += (number % 10 + number // 10 % 10 + number // 100)
             break
 
 print(sm)
