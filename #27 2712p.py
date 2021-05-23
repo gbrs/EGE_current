@@ -4,8 +4,6 @@
 Порядок элементов тройки должен соответствовать порядку в последовательности.
 '''
 
-'НЕПРАВИЛЬНЫЙ ОТВЕТ!!!'
-
 with open('#27 2712p.txt') as f:
     lst = []
     n = int(f.readline())
@@ -17,10 +15,15 @@ with open('#27 2712p.txt') as f:
 cnt = 0
 for i in range(n - 2):
     for j in range(i + 1, n - 1):
+        cnt += lst[j + 1::].count(lst[i] + lst[j])
+        if j % 1000 == 0:
+            print(i, j)
+'''for i in range(n - 2):
+    for j in range(i + 1, n - 1):
         for k in range(j + 1, n):
             if lst[i] + lst[j] == lst[k]:
                 # print(i, lst[i], j, lst[j], k, lst[k])
                 cnt += 1
-        print(i, j)
+        print(i, j)'''
 
 print(cnt)
