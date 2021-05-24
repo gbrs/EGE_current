@@ -4,7 +4,7 @@
 сумма которых четна, при этом между элементами пары есть хотя бы один ноль.
 '''
 
-with open('2710p.txt') as f:
+with open('#27 2710p.txt') as f:
     lst = []
     n = int(f.readline())
     for _ in range(n):
