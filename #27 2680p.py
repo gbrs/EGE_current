@@ -1,20 +1,44 @@
+'''
+На столе выложили цепочку из N костяшек по принципу домино.
+Под костяшкой понимается пара любых неотрицательных чисел,
+каждое не превышает 100. В наборе могут быть одинаковые костяшки.
+Переставлять местами костяшки нельзя, но можно поворачивать любое количество костяшек,
+получая, например, из костяшки 1-2 костяшку 2-1.
+Определите максимальную длину цепочки костяшек домино,
+которую можно получить с помощью переворачиваний.
+Под цепочкой понимается последовательность костяшек,
+в которой второе число первой костяшки равно первому числу второй.
+'''
+
+
+def dlina(last, i):
+    '''проверяем есть ли подходящее продолжение на соседней костяшке и
+    новым last становится второе число с такой костяшки.
+    Продолжаем пока получается'''
+    cnt = 1
+    for j in range(i + 1, n):
+        if cepochka[j][0] == last:
+            last = cepochka[j][1]
+        elif cepochka[j][1] == last:
+            last = cepochka[j][0]
+        else:
+            break
+        cnt += 1
+    return cnt
+
+
 with open('#27 2680p.txt') as f:
     cepochka = []
     n = int(f.readline())
     for _ in range(n):
         cepochka.append(list(map(int, f.readline().split())))
 
-cnt_max = 0
-cnt = 1
-last = cepochka[0][1]
-for dominoshka in cepochka[1:]:
-    if dominoshka[0] == last:
-        last = dominoshka[1]
-    elif dominoshka[1] == last:
-        last = dominoshka[0]
-    else:
-        cnt_max = max(cnt, cnt_max)
-        cnt = 1
-        last = dominoshka[0]  # TODO как переворачивать первую доминошку?
-    cnt += 1
 
+cnt_max = 0
+
+# пробуем строить цепочки от каждой костяшки поочереди, проверяя два ее положения
+for i in range(n):
+    cnt_max = max(dlina(cepochka[i][0], i), dlina(cepochka[i][1], i), cnt_max)
+
+
+print(cnt_max)
