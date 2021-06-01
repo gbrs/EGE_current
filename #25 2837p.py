@@ -27,5 +27,7 @@ for number in range(25317, 51237 + 1):
         while number_copy % divisor == 0:
             number_copy //= divisor
     else:
+        if number_copy > 1:
+            cnt += 1
         if cnt >= 6:
             print(number, mx_divisor)
