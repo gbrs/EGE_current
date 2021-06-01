@@ -27,6 +27,8 @@ for number in range(25317, 51237 + 1):
         while number_copy % divisor == 0:
             number_copy //= divisor
     else:
+        # учитываем делитель, который больше корня из числа,
+        # если есть, то он один, вроде
         if number_copy > 1:
             cnt += 1
         if cnt >= 6:
