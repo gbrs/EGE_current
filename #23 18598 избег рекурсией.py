@@ -14,7 +14,7 @@
 '''
 
 
-def counter(start, end):
+def count_ways(start, end):
     '''
     фактически считает путь от y до x? Всё равно в какую сторону двигаться.
     Так удобнее, чтобы не возиться с проверкой кратности числа (двум в данном примере)
@@ -25,8 +25,8 @@ def counter(start, end):
         return 0
     if start == end:
         return 1
-    return counter(start + 1, end) + counter(start * 2, end) + counter(start * 3, end)
+    return count_ways(start + 1, end) + count_ways(start * 2, end) + count_ways(start * 3, end)
 
 
 # 12 - обязательная ячейка
-print(counter(1, 12) * counter(12, 40))
+print(count_ways(1, 12) * count_ways(12, 40))

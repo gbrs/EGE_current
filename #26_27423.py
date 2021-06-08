@@ -12,7 +12,7 @@
 
 # считывание данных из файла и складывание их в список lst,
 # сортировка списка
-with open('26_27423.txt') as f:
+with open('#26_27423.txt') as f:
     s, n = map(int, f.readline().split())
     lst = []
     for i in range(n):

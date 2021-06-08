@@ -17,5 +17,6 @@ for char in s:
         cnt_max = max(cnt_max, cnt)
         cnt = 0
 
+# не забываем проверить длину самой последней подцепочки
 cnt_max = max(cnt_max, cnt)
 print(cnt_max)
